@@ -1,21 +1,21 @@
 'use strict';
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const webpack = require('webpack')
 const path = require('path')
-const fs = require('fs')
 const glob = require("glob")
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const debug = process.argv.indexOf('-d') !== -1
 
 let plugins = [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        output: {
-            comments: false,
-        }
+  new UglifyJsPlugin({
+    uglifyOptions: {
+      output: {
+          comments: false,
       }
-    })
-  ]
+    }
+  }),
+  new VueLoaderPlugin() // 使用vue-loader必须使用这个插件
+]
 
 let globmaths =  glob.sync("./src/pages/*.js",{
   nodir:true,
@@ -29,14 +29,18 @@ let entry = globmaths.reduce((obj,file)=>{
 
 module.exports = {
   mode: 'production',
-     entry:entry,
+    entry:entry,
     output: {
-        path: path.resolve(`./lib`),
-        filename: "[name].js",
+      path: path.resolve(`./lib`),
+      filename: "[name].js",
     },
     module: {
       rules: [
         { test: /\.js$/, exclude: /node_modules/, use: ["babel-loader"] },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        }
       ]
     },
     plugins: plugins,

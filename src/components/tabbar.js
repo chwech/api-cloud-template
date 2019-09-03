@@ -112,4 +112,3 @@ function NVTabBar_open() {
     }
   );
 }
-NVTabBar_open();

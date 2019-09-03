@@ -7,7 +7,6 @@ function defaultTask(cb) {
     if (err) {
       cb(err)
     } else {
-      console.log(stdout, stderr)
       cb(stdout)
     }
   })
@@ -26,6 +25,19 @@ function wifiSync (cb) {
   })
 }
 
-watch('*.html', wifiSync)
+function wifiPreveiw(cb) {
+  const wifiPreveiw = `apicloud wifiPreview --file ./index.html --port ${port}`
+  exec(wifiPreveiw, function(err, stdout, stderr) {
+    if (err) {
+      console.log(err)
+      cb()
+    } else {
+      console.log(stdout, stderr)
+      cb()
+    }
+  })
+}
+
+watch('./**/*.html', wifiPreveiw)
 exports.wifiSync = wifiSync
 exports.default = defaultTask
