@@ -6,11 +6,17 @@
       Copyright &copy;
       <span id="yeasr">{{ new Date().getFullYear() }}</span>
     </footer>
+    <dg-tabbar></dg-tabbar>
   </div>
 </template>
 <script>
+import dgTabbar from "@/components/dgTabbar.vue";
+
 export default {
   name: "",
+  components: {
+    dgTabbar
+  },
   props: {},
   data() {
     return {};
