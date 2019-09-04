@@ -6,15 +6,6 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const debug = process.argv.indexOf("-d") !== -1;
 
-let plugins = [
-  // 使用插件自动生成html文件，并且自动把打包的js,css注入
-  new HtmlWebpackPlugin({
-    template: path.resolve(`./public/index.html`) // 模板文件
-  }),
-  // 使用vue-loader必须使用这个插件
-  new VueLoaderPlugin()
-];
-
 let globmaths = glob.sync("./src/pages/**/main.js", {
   nodir: true
 });
@@ -26,6 +17,27 @@ let entry = globmaths.reduce((obj, file) => {
   obj[key] = file;
   return obj;
 }, {});
+
+function generateHtml(entry) {
+  let html = [];
+  Object.keys(entry).forEach(chunk => {
+    html.push(
+      new HtmlWebpackPlugin({
+        filename: `${chunk}.html`,
+        chunks: [chunk],
+        template: path.resolve(`./public/index.html`) // 模板文件
+      })
+    );
+  });
+  return html;
+}
+
+let plugins = [
+  // 使用插件自动生成html文件，并且自动把打包的js,css注入
+  ...generateHtml(entry),
+  // 使用vue-loader必须使用这个插件
+  new VueLoaderPlugin()
+];
 
 module.exports = {
   entry: entry,
