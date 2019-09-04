@@ -5,6 +5,7 @@ const baseWebpackConfig = require("./webpack.base.config");
 
 module.exports = merge(baseWebpackConfig, {
   mode: "development",
+  devtool: "inline-source-map",
   devServer: {
     contentBase: path.join(__dirname, "lib"),
     compress: true,
