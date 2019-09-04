@@ -38,12 +38,17 @@ let plugins = [
   // 使用vue-loader必须使用这个插件
   new VueLoaderPlugin()
 ];
-
 module.exports = {
   entry: entry,
   output: {
     path: path.resolve(`./lib`),
     filename: "[name].js"
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src")
+    },
+    extensions: [".vue"]
   },
   module: {
     rules: [
