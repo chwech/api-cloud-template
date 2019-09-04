@@ -1,5 +1,4 @@
 "use strict";
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
 const glob = require("glob");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
@@ -7,13 +6,6 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const debug = process.argv.indexOf("-d") !== -1;
 
 let plugins = [
-  new UglifyJsPlugin({
-    uglifyOptions: {
-      output: {
-        comments: false
-      }
-    }
-  }),
   new VueLoaderPlugin() // 使用vue-loader必须使用这个插件
 ];
 
@@ -28,8 +20,13 @@ let entry = globmaths.reduce((obj, file) => {
 }, {});
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: entry,
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
+  },
   output: {
     path: path.resolve(`./lib`),
     filename: "[name].js"

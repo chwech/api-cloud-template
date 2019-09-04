@@ -5,6 +5,7 @@
   "main": "index.js",
   "repository": "http://www.apicloud.com",
   "scripts": {
+    "serve": "webpack-dev-server",
     "webpack": "webpack",
     "sync": "apicloud wifiSync --project ./ --updateAll false",
     "bundle": "webpack --color --progress",
@@ -23,13 +24,16 @@
     "gulp": "^4.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "postcss-loader": "^3.0.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
