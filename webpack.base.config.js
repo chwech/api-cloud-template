@@ -18,10 +18,12 @@ let plugins = [
 let globmaths = glob.sync("./src/pages/**/main.js", {
   nodir: true
 });
-console.log(globmaths);
+
 let entry = globmaths.reduce((obj, file) => {
-  let filename = path.basename(file).split(".")[0];
-  obj[filename] = ["babel-polyfill", file];
+  let dir = path.dirname(file);
+  let key = dir.split("/");
+  key = key[key.length - 1];
+  obj[key] = file;
   return obj;
 }, {});
 
