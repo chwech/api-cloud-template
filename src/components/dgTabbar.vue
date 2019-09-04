@@ -95,7 +95,7 @@ export default {
             if (ret.eventType == "click" && ret.index == 0) {
               api.openFrame({
                 name: "kong",
-                url: "../html/message.html",
+                url: "./index.html",
                 rect: {
                   x: 0,
                   y: 70,
@@ -106,7 +106,7 @@ export default {
             if (ret.eventType == "click" && ret.index == 1) {
               api.openFrame({
                 name: "kong2",
-                url: "fame2.html",
+                url: "./test.html",
                 rect: {
                   x: 0,
                   y: 70,

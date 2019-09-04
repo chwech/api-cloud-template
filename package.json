@@ -6,9 +6,8 @@
   "repository": "http://www.apicloud.com",
   "scripts": {
     "serve": "webpack-dev-server --config webpack.dev.config.js",
-    "webpack": "webpack",
     "sync": "apicloud wifiSync --project ./ --updateAll false",
-    "bundle": "webpack --color --progress",
+    "build": "webpack --color --progress",
     "bundle_s": "webpack --color --progress && apicloud wifiSync --project ./ --updateAll false",
     "bundle_d": "webpack -d --color --progress",
     "bundle_d_s": "webpack -d --color --progress && apicloud wifiSync --project ./ --updateAll false"
@@ -33,6 +32,7 @@
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.1.0",
+    "vconsole": "^3.3.4",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",

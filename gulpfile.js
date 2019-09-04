@@ -26,7 +26,7 @@ function wifiSync(cb) {
 }
 
 function wifiPreveiw(cb) {
-  const wifiPreveiw = `apicloud wifiPreview --file ./index.html --port ${port}`;
+  const wifiPreveiw = `apicloud wifiPreview --file ./lib/index.html --port ${port}`;
   exec(wifiPreveiw, function(err, stdout, stderr) {
     if (err) {
       console.log(err);
@@ -39,7 +39,7 @@ function wifiPreveiw(cb) {
 }
 
 function bundle(cb) {
-  exec(`npm run bundle`, function(err, stdout, stderr) {
+  exec(`npm run build`, function(err, stdout, stderr) {
     if (err) {
       console.log(err);
       cb();
@@ -50,5 +50,6 @@ function bundle(cb) {
   });
 }
 
+exports.sync = wifiPreveiw;
 exports.wifiSync = series(bundle, wifiSync);
 exports.default = defaultTask;

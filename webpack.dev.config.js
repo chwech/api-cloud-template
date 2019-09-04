@@ -10,6 +10,7 @@ module.exports = merge(baseWebpackConfig, {
     contentBase: path.join(__dirname, "lib"),
     compress: true,
     port: 9000,
+    host: "192.168.1.106",
     hot: true // 模块热替换
   }
 });
