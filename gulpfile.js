@@ -1,43 +1,54 @@
-const { watch } = require('gulp')
-const { exec } = require('child_process')
-const port = 10915
+const { watch, series } = require("gulp");
+const { exec } = require("child_process");
+const port = 10915;
 function defaultTask(cb) {
-  const start = `apicloud wifiStart --port ${port}`
+  const start = `apicloud wifiStart --port ${port}`;
   exec(start, function(err, stdout, stderr) {
     if (err) {
-      cb(err)
+      cb(err);
     } else {
-      cb(stdout)
+      cb(stdout);
     }
-  })
+  });
 }
 
-function wifiSync (cb) {
-  const wifiSync = `apicloud wifiSync --project ./ --updateAll false --port ${port}`
+function wifiSync(cb) {
+  const wifiSync = `apicloud wifiSync --project ./ --updateAll false --port ${port}`;
   exec(wifiSync, function(err, stdout, stderr) {
     if (err) {
-      console.log(err)
-      cb()
+      console.log(err);
+      cb();
     } else {
-      console.log(stdout, stderr)
-      cb()
+      console.log(stdout, stderr);
+      cb();
     }
-  })
+  });
 }
 
 function wifiPreveiw(cb) {
-  const wifiPreveiw = `apicloud wifiPreview --file ./index.html --port ${port}`
+  const wifiPreveiw = `apicloud wifiPreview --file ./index.html --port ${port}`;
   exec(wifiPreveiw, function(err, stdout, stderr) {
     if (err) {
-      console.log(err)
-      cb()
+      console.log(err);
+      cb();
     } else {
-      console.log(stdout, stderr)
-      cb()
+      console.log(stdout, stderr);
+      cb();
     }
-  })
+  });
 }
 
-watch('./**/*.html', wifiPreveiw)
-exports.wifiSync = wifiSync
-exports.default = defaultTask
+function bundle(cb) {
+  exec(`npm run bundle`, function(err, stdout, stderr) {
+    if (err) {
+      console.log(err);
+      cb();
+    } else {
+      console.log(stdout, stderr);
+      cb();
+    }
+  });
+}
+
+exports.wifiSync = series(bundle, wifiSync);
+exports.default = defaultTask;
