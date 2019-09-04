@@ -4,11 +4,19 @@ import "../../../css/api.css";
 import "../../../script/api";
 import "./index.less";
 
-window.apiready = function() {
-  Vue.prototype.$api = window.$api;
-  Vue.prototype._api = api;
+function init() {
+  window.apiready = function() {
+    Vue.prototype.$api = window.$api;
+    Vue.prototype._api = window.api || {};
 
-  new Vue({
-    render: h => h(Test)
-  }).$mount("#app");
-};
+    new Vue({
+      render: h => h(Test)
+    }).$mount("#app");
+  };
+
+  if (process.env.NODE_ENV === "development") {
+    apiready();
+  }
+}
+
+init();
