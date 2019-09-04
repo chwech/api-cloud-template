@@ -2,11 +2,17 @@
 const path = require("path");
 const glob = require("glob");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const debug = process.argv.indexOf("-d") !== -1;
 
 let plugins = [
-  new VueLoaderPlugin() // 使用vue-loader必须使用这个插件
+  // 使用插件自动生成html文件，并且自动把打包的js,css注入
+  new HtmlWebpackPlugin({
+    template: path.resolve(`./public/index.html`) // 模板文件
+  }),
+  // 使用vue-loader必须使用这个插件
+  new VueLoaderPlugin()
 ];
 
 let globmaths = glob.sync("./src/pages/**/main.js", {
@@ -23,9 +29,10 @@ module.exports = {
   mode: "development",
   entry: entry,
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "lib"),
     compress: true,
-    port: 9000
+    port: 9000,
+    hot: true // 模块热替换
   },
   output: {
     path: path.resolve(`./lib`),
