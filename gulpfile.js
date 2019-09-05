@@ -10,6 +10,7 @@ function defaultTask(cb) {
       cb(stdout);
     }
   });
+  cb()
 }
 
 function wifiSync(cb) {

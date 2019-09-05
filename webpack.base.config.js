@@ -68,17 +68,6 @@ module.exports = {
         use: ["vue-style-loader", "css-loader", "stylus-loader"]
       },
       {
-        test: /\.css$/,
-        use: [
-          "vue-style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 }
-          },
-          "postcss-loader"
-        ]
-      },
-      {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
