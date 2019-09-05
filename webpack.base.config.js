@@ -2,9 +2,7 @@
 const path = require("path");
 const glob = require("glob");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-
-const debug = process.argv.indexOf("-d") !== -1;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let globmaths = glob.sync("./src/pages/**/main.js", {
   nodir: true
