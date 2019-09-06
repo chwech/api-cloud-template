@@ -4,6 +4,7 @@ const glob = require("glob");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+// 约定src/pages/页面目录/main.js为该页面的入口文件
 let globmaths = glob.sync("./src/pages/**/main.js", {
   nodir: true
 });
@@ -21,8 +22,8 @@ function generateHtml(entry) {
   Object.keys(entry).forEach(chunk => {
     html.push(
       new HtmlWebpackPlugin({
-        filename: `${chunk}.html`,
-        chunks: [chunk],
+        filename: `${chunk}.html`, // 生成的html文件名
+        chunks: [chunk], // 一个html对应一个入口chunk
         template: path.resolve(`./public/index.html`) // 模板文件
       })
     );
@@ -40,7 +41,7 @@ module.exports = {
   entry: entry,
   output: {
     path: path.resolve(`./lib`),
-    filename: "[name].js"
+    filename: "js/[name].js"
   },
   resolve: {
     alias: {
@@ -67,21 +68,25 @@ module.exports = {
         test: /\.styl(us)?$/,
         use: ["vue-style-loader", "css-loader", "postcss-loader", "stylus-loader"]
       },
+      // 处理图片资源路径
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: "file-loader"
+            loader: "file-loader",
+            options: {
+              outputPath: 'image'
+            }
           }
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: "url-loader",
             options: {
-              limit: 8192
+              limit: 8192 // 当小于8192字节时，会把图片转化为base64数据内联。大于此值的图片默认交由file-loader处理，可通过fallback选项设置其它loader
             }
           }
         ]

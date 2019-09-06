@@ -10,7 +10,7 @@ function init() {
     Vue.prototype.$api = window.$api;
     Vue.prototype._api = window.api;
 
-    // new VConsole();
+    new VConsole();
     new Vue({
       render: h => h(Test)
     }).$mount("#app");
