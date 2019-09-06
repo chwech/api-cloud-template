@@ -4,7 +4,7 @@ const merge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.config");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require('webpack')
-const env = require('./env.development')
+const env = require('./env.production')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -13,6 +13,7 @@ Object.keys(env).forEach(k => {
   e['process.env.' + k] = JSON.stringify(env[k])
 })
 let plugins = [
+  // 抽取css文件
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
     // both options are optional
@@ -32,6 +33,7 @@ let plugins = [
     }
   })
 ]
+// 分析打包出来的包依赖
 if (process.argv.includes('--analyze')) {
   plugins.push(new BundleAnalyzerPlugin())
 }
