@@ -60,14 +60,6 @@ module.exports = {
         test: /\.vue$/,
         loader: "vue-loader"
       },
-      {
-        test: /\.less$/,
-        use: ["vue-style-loader", "css-loader", "postcss-loader", "less-loader"]
-      },
-      {
-        test: /\.styl(us)?$/,
-        use: ["vue-style-loader", "css-loader", "postcss-loader", "stylus-loader"]
-      },
       // 处理图片资源路径
       {
         test: /\.(png|jpe?g|gif)$/i,
