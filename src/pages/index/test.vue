@@ -1,9 +1,9 @@
 <template>
   <div class="wrap">
-    <dg-home-ad :list="ad"/>
+    <!-- <dg-home-ad :list="ad"/> -->
     <!-- <header ref="header">API Cloud</header> -->
     <section class="flex-1">
-      <label>你好，世界123</label>
+      <label>你好，世界</label>
       <div id="sys-info">
         <ul>
           <li>引擎版本信息: {{ device.ver }}</li>
@@ -67,19 +67,19 @@ export default {
     console.log(process.env.NODE_ENV)
     console.log(process.env.VUE_APP_API_BASE)
     // this.getAdv()
-    // this.device.ver = this._api.version;
-    // this.device.sType = this._api.systemType;
-    // this.device.sVer = this._api.systemVersion;
-    // this.device.id = this._api.deviceId;
-    // this.device.model = this._api.deviceModel;
-    // this.device.name = this._api.deviceName;
-    // this.device.cType = this._api.connectionType;
-    // this.device.winName = this._api.winName;
-    // this.device.winWidth = this._api.winWidth;
-    // this.device.winHeight = this._api.winHeight;
-    // this.device.frameName = this._api.frameName || "";
-    // this.device.frameWidth = this._api.frameWidth || "";
-    // this.device.frameHeight = this._api.frameHeight || "";
+    this.device.ver = this._api.version;
+    this.device.sType = this._api.systemType;
+    this.device.sVer = this._api.systemVersion;
+    this.device.id = this._api.deviceId;
+    this.device.model = this._api.deviceModel;
+    this.device.name = this._api.deviceName;
+    this.device.cType = this._api.connectionType;
+    this.device.winName = this._api.winName;
+    this.device.winWidth = this._api.winWidth;
+    this.device.winHeight = this._api.winHeight;
+    this.device.frameName = this._api.frameName || "";
+    this.device.frameWidth = this._api.frameWidth || "";
+    this.device.frameHeight = this._api.frameHeight || "";
 
     // const header = this.$refs.header; // 获取 header 标签元素
     // const footer = this.$refs.footer; // 获取 footer 标签元素

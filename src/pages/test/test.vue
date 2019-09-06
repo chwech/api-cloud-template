@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">消息123</div>
+  <div class="flex">消息</div>
 </template>
 <script>
 export default {

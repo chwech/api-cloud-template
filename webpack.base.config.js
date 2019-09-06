@@ -41,7 +41,7 @@ module.exports = {
   entry: entry,
   output: {
     path: path.resolve(`./lib`),
-    filename: "js/[name].js"
+    filename: "js/[name].[contenthash].js"
   },
   resolve: {
     alias: {
