@@ -61,11 +61,11 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["vue-style-loader", "css-loader", "less-loader"]
+        use: ["vue-style-loader", "css-loader", "postcss-loader", "less-loader"]
       },
       {
         test: /\.styl(us)?$/,
-        use: ["vue-style-loader", "css-loader", "stylus-loader"]
+        use: ["vue-style-loader", "css-loader", "postcss-loader", "stylus-loader"]
       },
       {
         test: /\.(png|jpe?g|gif)$/i,

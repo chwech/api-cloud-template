@@ -98,10 +98,7 @@ module.exports = merge(baseWebpackConfig, {
               // publicPath: '../'
             }
           },
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 }
-          },
+          "css-loader",
           "postcss-loader"
         ]
       },
