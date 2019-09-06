@@ -90,29 +90,21 @@ export default {
           selectedIndex: 0
         },
         function(ret, err) {
+          console.log(ret)
           if (ret) {
             console.log(ret);
             if (ret.eventType == "click" && ret.index == 0) {
-              api.openFrame({
-                name: "kong",
-                url: "./index.html",
-                rect: {
-                  x: 0,
-                  y: 70,
-                  h: 200
-                }
-              });
-            }
-            if (ret.eventType == "click" && ret.index == 1) {
-              api.openFrame({
-                name: "kong2",
-                url: "./test.html",
-                rect: {
-                  x: 0,
-                  y: 70,
-                  h: 200
-                }
-              });
+              // api.openWin({
+              //   url: './test.html'
+              // })
+              alert('1')
+            } else if (ret.eventType == "click" && ret.index == 1) {
+              api.openWin({
+                name: 'test',
+                url: './test.html'
+              })
+            } else if (ret.eventType == 'click' && ret.index == 2) {
+              alert(2)
             }
             var NVTabBar = api.require("NVTabBar");
             NVTabBar.setBadge({

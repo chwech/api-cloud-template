@@ -1,5 +1,5 @@
 <template>
-  <div>消息</div>
+  <div class="flex">消息123</div>
 </template>
 <script>
 export default {
@@ -14,6 +14,9 @@ export default {
 };
 </script>
 <style lang='less' scoped>
+.flex {
+  display: flex;
+}
 label {
   margin: 10px;
   font-size: 24px;

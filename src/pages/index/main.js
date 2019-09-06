@@ -8,13 +8,16 @@ import VConsole from "vconsole";
 function init() {
   window.apiready = function() {
     Vue.prototype.$api = window.$api;
-    Vue.prototype._api = api;
+    Vue.prototype._api = window.api;
 
-    new VConsole();
+    // new VConsole();
     new Vue({
       render: h => h(Test)
     }).$mount("#app");
   };
+  if (process.env.NODE_ENV === 'development') {
+    apiready()
+  }
 }
 
 init();
