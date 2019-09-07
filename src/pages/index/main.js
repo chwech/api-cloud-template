@@ -1,4 +1,4 @@
-import Test from "./test.vue";
+import App from "./index.vue";
 import Vue from "vue";
 import "../../../css/api.css";
 import "../../../script/api";
@@ -11,7 +11,7 @@ function init() {
     Vue.prototype._api = window.api;
 
     new Vue({
-      render: h => h(Test)
+      render: h => h(App)
     }).$mount("#app");
   };
   if (process.env.NODE_ENV === 'development') {

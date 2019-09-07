@@ -1,5 +1,4 @@
 "use strict";
-const path = require("path");
 const merge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.config");
 const webpack = require('webpack')
@@ -15,9 +14,12 @@ let plugins = [
   new webpack.DefinePlugin(e)
 ]
 
-module.exports = merge(baseWebpackConfig, {
+const config = merge(baseWebpackConfig, {
   mode: "development",
   devtool: "inline-source-map",
+  output: {
+    filename: "js/[name].[hash].js" // 热模块替换不能和contenthash使用，所以开发环境使用hash代替
+  },
   devServer: {
     compress: true, // gzip
     port: 9000,
@@ -46,3 +48,5 @@ module.exports = merge(baseWebpackConfig, {
   },
   plugins: plugins
 });
+
+module.exports = config
