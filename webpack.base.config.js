@@ -62,26 +62,13 @@ module.exports = {
       },
       // 处理图片资源路径
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: 'image'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192 // 当小于8192字节时，会把图片转化为base64数据内联。大于此值的图片默认交由file-loader处理，可通过fallback选项设置其它loader
-            }
-          }
-        ]
+        test: /\.(gif|jpe?g|png|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          fallback: 'file-loader',
+          name: path.posix.join('img/[name].[hash:7].[ext]')
+        }
       }
     ]
   },

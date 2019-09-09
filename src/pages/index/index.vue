@@ -4,6 +4,7 @@
     <!-- <header ref="header">API Cloud</header> -->
     <section class="flex-1">
       <label>你好，世界</label>
+      <img :src="src" alt="">
       <div id="sys-info">
         <ul>
           <li>引擎版本信息: {{ device.ver }}</li>
@@ -30,6 +31,7 @@
   </div>
 </template>
 <script>
+import src from "../../../image/a5744b2e78000fd9fb0e3704c09bac2c.jpeg"
 import dgTabbar from "@/components/dgTabbar.vue";
 // import dgHomeAd from "./Ad.vue"
 // import { adv } from '@/api/api'
@@ -46,6 +48,7 @@ export default {
   props: {},
   data() {
     return {
+      src: src,
       device: {
         ver: ""
       },
