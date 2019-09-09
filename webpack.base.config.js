@@ -69,6 +69,16 @@ module.exports = {
           fallback: 'file-loader',
           name: path.posix.join('img/[name].[hash:7].[ext]')
         }
+      },
+      // 处理文字资源
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          fallback: 'file-loader',
+          name: path.posix.join('fonts/[name].[hash:7].[ext]')
+        }
       }
     ]
   },
