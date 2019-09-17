@@ -16,7 +16,6 @@ function init() {
   };
   if (process.env.NODE_ENV === 'development') {
     new VConsole();
-    apiready()
   }
 }
 
