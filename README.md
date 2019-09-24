@@ -1,8 +1,12 @@
 # api cloud app项目模板
 
 ## 使用
-```git
-git clone https://github.com/chwech/api-cloud-template.git projectName
+```
+// 下载脚手架工具
+npm i -g @chwech/cli
+
+// 初始化项目
+chwech init api-cloud [projectName]
 ```
 
 ## 目录结构
